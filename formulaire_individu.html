@@ -1,0 +1,185 @@
+<?php
+include "config/db_config.php";
+session_start ();
+?>
+<!DOCTYPE html>
+<html>
+
+<?php
+if (!isset($_SESSION['login'])) {
+    header('location: login.php');
+}
+?>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FENOUIL | Articles</title>
+    
+   
+            <link href="kha.css" rel="stylesheet">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="img/img_avatar.png" width="50" />
+                             </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                 <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo utf8_encode($_SESSION['nom']); ?></strong>
+                             </span> <span class="text-muted text-xs block">Prospecteur</span> </span> </a>
+                    </div>
+                    <div class="logo-element">
+                        FE+
+                    </div>
+                </li>
+                <li>
+                    <a href="accueil_prospecteur.php"><i class="fa fa-users"></i> <span class="nav-label">Individus</span></a>
+                </li>
+                <li class="active">
+                    <a href="articles.php"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Articles</span></a>
+                </li>
+                <li>
+                    <a href="creation_cible_routage.php"><i class="fa fa-dot-circle-o"></i> <span class="nav-label">Cible de routage</span></a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <span class="m-r-sm text-muted welcome-message">Bienvenue sur <b>FE</b>NOUIL.</span>
+                    </li>
+
+                    <li>
+                        <a href="logout.php">
+                            <i class="fa fa-sign-out"></i> Déconnexion
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-9">
+                <h2>Articles</h2>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="accueil_prospecteur.php">Accueil</a>
+                    </li>
+                    <li class="active">
+                        <strong>Articles</strong>
+                    </li>
+                </ol>
+            </div>
+        
+
+        <div class="col-lg-4">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>Ajoutez un Client</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                               
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+
+                                                   
+
+            <form role="form"  action="formIndividu.php" method='post'>
+               <div class="form-group"><label>Nom</label> <input type="nom" name ="nom" placeholder="nom" class="form-control"></div>
+               <div class="form-group"><label>Age</label> <input type="age" name ="age" placeholder="age" class="form-control"></div>
+               <div class="form-group"><label>Catégorie socio-professionnelle</label> <input type="categorie" name ="categorie"  placeholder="categorie" class="form-control"></div>
+               <div class="form-group"><label>Code postal</label> <input type="dpt_residence" name ="dpt_residence" placeholder="dpt_residence" class="form-control"></div>  
+               <div>
+                     <button class="btn btn-sm btn-primary float-right m-t-n-xs" type="submit"><strong>Enregistrer</strong></button>
+                 
+                   </div>
+               </form>
+            </div>
+                                                  
+        </div>
+       </div>
+      </div>
+    </div>
+   </div>                    
+ </div>
+ </div>
+</div>
+           
+        <div class="footer">
+            <div>
+                <strong>Copyright</strong> FENOUIL APPLICATION - MIAGE L3 &copy; 2018-2019
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="js/inspinia.js"></script>
+<script src="js/plugins/pace/pace.min.js"></script>
+</body>
+</html>
+
+ <?php
+                        
+        $bdd = new PDO("mysql:host=127.0.0.1;dbname=fenouil;", "root", "");
+        
+            if(isset($_POST['nom']) AND !empty($_POST['nom']) AND isset($_POST['age']) AND !empty($_POST['age']) AND isset($_POST['socio']) AND !empty($_POST['categorie']) AND isset($_POST['dpt_residence']) AND !empty($_POST['dpt_residence']))
+            {
+                
+                $re = $bdd->prepare('INSERT INTO user(nom, age, categorie,dpt_residence) VALUES(?, ?, ?,?)');
+                
+                $re->execute(array($_POST['nom'],$_POST['age'],$_POST['categorie'],$_POST['dpt_residence']));
+           }
+          
+         ?>
+    <?php
+            }
+                    
+            ?>     
+
+
+
